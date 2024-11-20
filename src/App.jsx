@@ -13,47 +13,53 @@ import { ForgetPassword } from "./pages/auth/ForgetPassword";
 import { Home } from "./pages/admin/Home";
 import { Error404 } from "./pages/Error404";
 import { Chat } from "./pages/admin/Chat";
+import { Profile } from "./pages/admin/Profile";
 
 function App() {
 	const router = createBrowserRouter([
-    {
-      path: "/", element: <LayoutAdmin />,
-      children: [
-        {
-          path: "", element: <Home />,
-        },
-        {
-          path: "chat", element: <Chat />,
-        },
-      ],
-    },
-    {
-      path: "/auth", element: <LayoutAuth />,
-      children: [
-        {
-          path: "", element: <Login />,
-        },
-        {
-          path: "register", element: <Register />,
-        },
-        {
-          path: "forget-password", element: <ForgetPassword />,
-        },
-      ],
-    },
-    {
-      path: "/inicio", element: <Home />,
-    },
 		{
-			path: "*", element: <Error404 />,
+			path: "/",
+			element: <LayoutAdmin />,
+			children: [
+				{
+					path: "",
+					element: <Home />,
+				},
+				{
+					path: "chat",
+					element: <Chat />,
+				},
+				{
+					path: "/profile",
+					element: <Profile />,
+				},
+			],
+		},
+		{
+			path: "/login",
+			element: <Login />,
+		},
+		{
+			path: "/register",
+			element: <Register />,
+		},
+		{
+			path: "/forget-password",
+			element: <ForgetPassword />,
+		},
+		{
+			path: "/inicio",
+			element: <Home />,
+		},
+		{
+			path: "*",
+			element: <Error404 />,
 		},
 	]);
 
 	return (
 		<>
-			<RouterProvider
-				router={router}
-			/>
+			<RouterProvider router={router} />
 		</>
 	);
 }

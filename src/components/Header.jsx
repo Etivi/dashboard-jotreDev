@@ -137,7 +137,7 @@ export const Header = () => {
 				>
 					<MenuItem className="transition-colors text-gray-300 hover:bg-secondary-900 rounded-lg active:bg-secondary-900 focus:bg-secondary-900">
 						<Link
-							to="/perfil"
+							to="/profile"
 							className="flex items-center gap-x-3  -mx-3"
 						>
 							<img
