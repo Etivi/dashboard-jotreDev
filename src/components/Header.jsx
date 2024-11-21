@@ -41,7 +41,7 @@ export const Header = () => {
 				>
 					<MenuItem className="transition-colors text-gray-300 hover:bg-transparent rounded-lg flex items-center justify-between -mx-3">
 							<h3>Notificaciones</h3>
-							<IoIosClose className="w-6 h-6  hover:bg-secondary-900 rounded-full" />
+							<IoIosClose className="w-6 h-6  hover:bg-secondary-900 rounded-full hover:text-primary" />
 					</MenuItem>
 					<MenuDivider style={{ backgroundColor: "#2e2f37" }} />
 					<MenuItem className="transition-colors text-gray-300 hover:bg-secondary-900 rounded-lg ">
