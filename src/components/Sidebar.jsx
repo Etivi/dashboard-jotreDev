@@ -18,14 +18,15 @@ export const Sidebar = () => {
 	return (
 		<>
 			<div
-				className={`xl:h-[100vh] overflow-y-scroll fixed xl:static w-[80%] md:w-[40%] lg:w-[30%] xl:w-auto h-full top-0 bg-secondary-100 p-6 flex flex-col justify-between z-50 ${
-					showSidebar ? "left-0" : "-left-full"
-				} transition-all`}
+				className={`xl:h-[100vh] overflow-y-scroll fixed xl:static w-[80%] md:w-[40%] lg:w-[30%] xl:w-auto h-full top-0 border border-r-secondary-200 bg-secondary-100 p-6 flex flex-col justify-between z-50 ${showSidebar ? "left-0" : "-left-full"
+					} transition-all`}
 			>
 				<div>
-					<h1 className="text-center text-2xl font-bold text-white mb-10">
-						Admin<span className="text-primary text-2xl">.</span>
-					</h1>
+					<div className="flex justify-center">
+						<Link to="/" className="text-2xl font-bold text-white mb-10">
+							Admin<span className="text-primary text-2xl">.</span>
+						</Link>
+					</div>
 					<ul>
 						<li>
 							<Link
@@ -46,9 +47,8 @@ export const Sidebar = () => {
 									Social media
 								</span>
 								<HiOutlineChevronRight
-									className={`text-primary ${
-										showSubMenu && "rotate-90"
-									} transition-all`}
+									className={`text-primary ${showSubMenu && "rotate-90"
+										} transition-all`}
 								/>
 							</button>
 							<ul className={`my-2 ${!showSubMenu && "hidden"}`}>
@@ -80,7 +80,7 @@ export const Sidebar = () => {
 						</li>
 						<li>
 							<Link
-								to="/"
+								to="/tickets"
 								className="py-2 px-4 rounded-lg text-white flex text-sm items-center gap-2 hover:bg-secondary-900 transition-colors"
 							>
 								<HiOutlineSupport className="text-primary" />
@@ -108,6 +108,8 @@ export const Sidebar = () => {
 					</Link>
 				</nav>
 			</div>
+
+			{/* Boton para abrir y cerrar el sidebar en el movil */}
 			<button
 				onClick={() => setShowSidebar(!showSidebar)}
 				className="fixed xl:hidden bottom-4 right-4 bg-primary w-12 h-12 rounded-full flex items-center justify-center text-black z-50"

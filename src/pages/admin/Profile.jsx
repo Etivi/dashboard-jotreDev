@@ -1,8 +1,11 @@
 import { Tooltip } from "antd";
+import { Switch } from 'antd';
 
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
-import "yup-phone-lite";
+
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 
 import "@szhsin/react-menu/dist/index.css";
 import "@szhsin/react-menu/dist/transitions/zoom.css";
@@ -10,6 +13,7 @@ import "@szhsin/react-menu/dist/transitions/zoom.css";
 import { CiEdit } from "react-icons/ci";
 
 import countries from "../../data/countries";
+import { Breadcrumbs } from "../../components/Breadcrumbs";
 
 export const Profile = () => {
 
@@ -18,12 +22,13 @@ export const Profile = () => {
 		name: Yup.string().required("El nombre es requerido"),
 		lastName: Yup.string().required("El apellido es requerido"),
 		company: Yup.string(),
-		phone: Yup.string().phone("CO", "El numero de telefono es invalido").required("El numero de telefono es requerido"),
+		phone: Yup.string()
+			.required("El número de teléfono es requerido"),
 		website: Yup.string(),
 		country: Yup.string(),
 		commnucation: Yup.string(),
+		notifications: Yup.boolean()
 	})
-
 
 	const customizedSubmit = (values) => {
 		console.log(values)
@@ -31,9 +36,9 @@ export const Profile = () => {
 
 	return (
 		<>
-
+			<Breadcrumbs title="Account" pagina="Account Settings" />
 			<div className="bg-secondary-100 p-4 rounded-t-xl border border-secondary-200">
-				<h3 className="text-xl font-bold">Profile Details</h3>
+				<h1 className="text-xl font-bold">Profile Details</h1>
 			</div>
 			<div>
 				<Formik
@@ -48,7 +53,7 @@ export const Profile = () => {
 						isSubmitting,
 						handleBlur,
 						setFieldValue,
-						resetForm
+						resetForm,
 					}) => {
 						return (
 							<form onSubmit={handleSubmit} className="bg-secondary-100 p-4 rounded-b-xl border-r border-l border-b border-secondary-200 flex flex-col gap-4">
@@ -133,14 +138,38 @@ export const Profile = () => {
 										<p>Contact Phone</p>
 									</div>
 									<div className="flex-1 mb-2 gap-4">
-										<input
+										<PhoneInput
+											country="co"
 											type="number"
 											name="phone"
 											placeholder="Phone"
 											onBlur={handleBlur}
-											onChange={handleChange}
+											onChange={(phone) => setFieldValue('phone', phone)}
 											defaultValue={values.phone}
-											className="py-2 px-4 rounded-lg w-full bg-secondary-900 outline-none" />
+											inputProps={{ name: 'phone', required: true }}
+											inputStyle={{
+												width: '100%',
+												paddingTop: '20px',
+												paddingBottom: '20px', // Tailwind: rounded-lg
+												backgroundColor: '#131517', // Color de fondo
+												color: '#d1d5db', // Color del texto
+												border: 'none', // Color del borde
+												borderRadius: '8px',
+											}}
+											buttonStyle={{
+												backgroundColor: '#131517',
+												border: 'none',
+												borderRadius: '8px',
+											}}
+											dropdownStyle={{
+												backgroundColor: '#131517',
+												border: '1px solid #2e2f37',
+												borderRadius: '8px',
+											}}
+
+										// className=" py-2 px-4 rounded-lg w-full bg-secondary-900 outline-none" 
+
+										/>
 										<ErrorMessage name="phone" component="small" className="text-red-500" />
 									</div>
 								</div>
@@ -179,6 +208,17 @@ export const Profile = () => {
 								</div>
 								<div className="flex sm:flex-row flex-col gap-y-4">
 									<div className="w-1/4">
+										<p>Receive Notifications</p>
+									</div>
+									<div className="flex-1 mb-2 gap-4">
+										<Switch
+											checked={values.notifications} // Controla el estado del switch
+											onChange={(checked) => setFieldValue('notifications', checked)} // Actualiza el valor en Formik
+										/>
+									</div>
+								</div>
+								<div className="flex sm:flex-row flex-col gap-y-4">
+									<div className="w-1/4">
 										<p>Communication</p>
 									</div>
 									<div className="flex gap-4">
@@ -207,7 +247,7 @@ export const Profile = () => {
 								<div className="flex justify-end gap-4 pt-4">
 									<button
 										type="reset"
-										className="bg-secondary-200 text-gray-400 text-sm font-bold py-3 px-4 rounded-lg hover:bg-secondary-200/80"
+										className="bg-secondary-200 text-gray-400 text-sm font-bold py-2 px-4 rounded-lg hover:bg-secondary-200/80"
 										onClick={resetForm}
 									>
 										Discard
@@ -215,7 +255,7 @@ export const Profile = () => {
 									<button
 										type="submit"
 										disabled={isSubmitting}
-										className="bg-primary text-black text-sm font-bold py-3 px-4 rounded-lg hover:bg-primary/80"
+										className="bg-primary/90 text-secondary-900 text-sm font-bold py-2 px-4 rounded-lg hover:bg-primary"
 									>
 										Save changes
 									</button>

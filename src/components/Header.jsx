@@ -10,7 +10,7 @@ import "@szhsin/react-menu/dist/transitions/zoom.css";
 
 export const Header = () => {
 	return (
-		<header className="h-[7vh] lg:h-[10vh] border-b border-secondary-100 p-8 flex items-center justify-end transition-colors">
+		<header className="h-[5vh]  border-b border-secondary-200 p-8 flex items-center justify-end transition-colors">
 			<nav className="flex items-center gap-x-2">
 				<Menu
 					menuButton={
@@ -32,16 +32,16 @@ export const Header = () => {
 						backgroundColor: "#1e1f25",
 						padding: "4px",
 						rounded: "10px",
-						border: "1px solid 'bg-gray-300'",
+						border: "1px solid #2e2f37",
 						width: "300px",
 					}}
 					transition
 					gap={12}
-          align="center"
+					align="center"
 				>
 					<MenuItem className="transition-colors text-gray-300 hover:bg-transparent rounded-lg flex items-center justify-between -mx-3">
-							<h3>Notificaciones</h3>
-							<IoIosClose className="w-6 h-6  hover:bg-secondary-900 rounded-full hover:text-primary" />
+						<h3>Notificaciones</h3>
+						<IoIosClose className="w-6 h-6  hover:bg-secondary-900 rounded-full hover:text-primary" />
 					</MenuItem>
 					<MenuDivider style={{ backgroundColor: "#2e2f37" }} />
 					<MenuItem className="transition-colors text-gray-300 hover:bg-secondary-900 rounded-lg ">
@@ -106,9 +106,9 @@ export const Header = () => {
 							</div>
 						</Link>
 					</MenuItem>
-          <MenuDivider style={{ backgroundColor: "#2e2f37" }} />
-          <MenuItem className="text-gray-300 hover:bg-secondary-900 rounded-lg flex justify-center">
-							<h3 className="text-sm"> Todas las notificaciones</h3>
+					<MenuDivider style={{ backgroundColor: "#2e2f37" }} />
+					<MenuItem className="text-gray-300 hover:bg-secondary-900 rounded-lg flex justify-center">
+						<h3 className="text-sm"> Todas las notificaciones</h3>
 					</MenuItem>
 
 				</Menu>
@@ -133,7 +133,7 @@ export const Header = () => {
 					}}
 					transition
 					gap={12}
-          align="end"
+					align="end"
 				>
 					<MenuItem className="transition-colors text-gray-300 hover:bg-secondary-900 rounded-lg active:bg-secondary-900 focus:bg-secondary-900">
 						<Link
@@ -153,7 +153,7 @@ export const Header = () => {
 							</div>
 						</Link>
 					</MenuItem>
-          <MenuDivider style={{ backgroundColor: "#2e2f37" }} />
+					<MenuDivider style={{ backgroundColor: "#2e2f37" }} />
 					<MenuItem className="transition-colors text-gray-300 hover:bg-secondary-900 rounded-lg">
 						<Link
 							to="/config"

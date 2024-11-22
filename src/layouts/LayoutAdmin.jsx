@@ -8,7 +8,7 @@ export const LayoutAdmin = () => {
 			<Sidebar />
 			<div className="xl:col-span-5">
 				<Header />
-				<div className="h-[90vh] overflow-y-scroll p-8">
+				<div className="h-[90vh] overflow-y-scroll max-w-[1280px] mx-auto md:pt-5 md:pb-5 md:pl-8 md:pr-8 pt-2 pb-2 pl-5 pr-5">
 					<Outlet />
 				</div>
 			</div>

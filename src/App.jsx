@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Layouts
 import { LayoutAdmin } from "./layouts/LayoutAdmin";
-import { LayoutAuth } from "./layouts/LayoutAuth";
 
 // Pages auth
 import { Login } from "./pages/auth/Login";
@@ -14,6 +13,7 @@ import { Home } from "./pages/admin/Home";
 import { Error404 } from "./pages/Error404";
 import { Chat } from "./pages/admin/Chat";
 import { Profile } from "./pages/admin/Profile";
+import { Tickets } from "./pages/admin/Tickets";
 
 function App() {
 	const router = createBrowserRouter([
@@ -32,6 +32,10 @@ function App() {
 				{
 					path: "/profile",
 					element: <Profile />,
+				},
+				{
+					path: "/tickets",
+					element: <Tickets />,
 				},
 			],
 		},
